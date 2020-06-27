@@ -19,4 +19,5 @@ curl_setopt($curlP, CURLOPT_RETURNTRANSFER, true);
 $json_textoP = curl_exec($curlP);
 curl_close($curlP);
 
+echo 'pija...';
 ?>
