@@ -75,7 +75,7 @@ $(document).ready(function() {
 					// para recibir las notificaciones en tu endpoint público.
 
 					var orderJSON ={"external_reference": external_reference,
-									"notification_url": "https://mp-instore-qr.herokuapp.com/api/notifications",
+									"notification_url": "https://mp-instore-qr.herokuapp.com/api/notifications/index.php",
 									"items" : items
 									};
 
