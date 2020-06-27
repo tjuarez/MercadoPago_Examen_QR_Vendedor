@@ -11,7 +11,7 @@ global $access_token,$collector_id,$notificationJSON;
 
 $lastResource = file_get_contents('../notifications.txt');
 
-
+$url= $lastResource."?access_token=".$access_token;
 
 
 
@@ -22,15 +22,9 @@ $urlP = 'http://5.175.225.39:8080/ords/pelu/AgendaWeb/mp_ecommerce';
 $curlP = curl_init($urlP);
 
 
-//$temp = json_decode($lastResource);
-
-$temp = json_decode($lastResource, FALSE);
-$itemsP = $temp->{'url'};
-
 //creo un objeto JSON con los datos a enviar al servicio web
 $data = array(
-    'resultado' => $lastResource,
-    'url' => $temp->{'url'}
+    'resultado' => $url
 );
 
 $payload = json_encode($data);
@@ -44,11 +38,6 @@ $json_textoP = curl_exec($curlP);
 curl_close($curlP);
 
 
-
-
-
-
-$url= $lastResource;
 
 // REVISAR AQUÍ:
 // Agrega la $url necesaria para revisar el estado del pago en base al recurso recibido de la notificación
