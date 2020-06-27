@@ -22,12 +22,15 @@ $urlP = 'http://5.175.225.39:8080/ords/pelu/AgendaWeb/mp_ecommerce';
 $curlP = curl_init($urlP);
 
 
-$temp = json_decode($lastResource);
+//$temp = json_decode($lastResource);
 
+$temp = json_decode($lastResource, FALSE);
+$itemsP = $temp->{'url'};
 
 //creo un objeto JSON con los datos a enviar al servicio web
 $data = array(
-	'url' => $temp->url
+    'resultado' => $lastResource,
+    'url' => $temp->{'url'}
 );
 
 $payload = json_encode($data);
