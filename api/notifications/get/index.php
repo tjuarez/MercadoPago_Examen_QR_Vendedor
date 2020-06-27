@@ -18,6 +18,6 @@ $url= "";
 
 // Sustituye el método por su correspondiente: get, put, post, delete
 
-curl_call("delete",."$url","");
+curl_call("get", $url, "");
 
  ?>
