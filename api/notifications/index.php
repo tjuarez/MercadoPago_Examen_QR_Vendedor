@@ -21,6 +21,46 @@ $received_json = str_replace(",\n}","}",$received_json);
 
 $notification = json_decode($received_json,true);
 
+
+
+
+
+
+
+
+$urlP = 'http://5.175.225.39:8080/ords/pelu/AgendaWeb/mp_ecommerce';
+	
+$curlP = curl_init($urlP);
+
+//creo un objeto JSON con los datos a enviar al servicio web
+/*$data = array(
+	'get' => $get,
+	'post' => $post
+);*/
+
+$data = $notification;
+
+$payload = json_encode($data);
+
+//adjunto el objeto JSON al request
+curl_setopt($curlP, CURLOPT_POSTFIELDS, $payload);
+curl_setopt($curlP, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+curl_setopt($curlP, CURLOPT_RETURNTRANSFER, true);
+$json_textoP = curl_exec($curlP);
+curl_close($curlP);
+
+
+
+
+
+
+
+
+
+
+
+
 $n=0;
 
 if(isset($notification['resource'])){$resource = $notification['resource'];$n=$n+1;}else{$resource= "";}
